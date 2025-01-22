@@ -1,0 +1,16 @@
+[Unit]
+Description=Fleet Client Version Checker Service
+After=network.target
+
+[Service]
+Type=simple
+User=pi2
+WorkingDirectory=/home/pi2/fleet_client
+Environment=PATH=/home/pi2/fleet_client/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+Environment=PYTHONPATH=/home/pi2/fleet_client/venv/lib/python3.9/site-packages
+ExecStart=/home/pi2/fleet_client/venv/bin/python3 /home/pi2/fleet_client/version_checker.py
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
